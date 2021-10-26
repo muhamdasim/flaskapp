@@ -1,0 +1,434 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+{% block title %} Home {% endblock %}
+
+
+
+{% block body %}
+
+<section class="hero-banner bg-light py-5">
+    <div class="container">
+        <div class="row row align-items-center">
+            <div class="col-lg-5 offset-lg-1 order-lg-1">
+                <img src="{{ url_for('static', filename='images/h1.png') }}" class="img-fluid" >
+            </div>
+            <div class="col-lg-6">
+                <h1 class="mt-3">Discover how Street View Spectator can help you</h1>
+                <p class="lead text-secondary my-5">Ready to transform how you generate leads and prospects
+                <br>
+                instantly grow your email list, convert more leads, and increase sales
+                </p>
+                <a class="btn rounded-pill btn-dark py-2 px-4" href="/pricing">Get Started</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container my-5 p-5 z-depth-1">
+
+
+  <!--Section: Content-->
+  <section class="dark-grey-text">
+
+    <!-- Section heading -->
+    <h5 class="text-center font-weight-bold mb-4 pb-2">According to our research, collecting leads with Street View Spectator is almost 100 times faster than the traditional market research activities.</h5>
+    <!-- Section description -->
+    <p class="text-center lead grey-text mx-auto mb-5">If you use traditional methods, you will have to manually save contact information by browsing the web pages of all companies that come up as a result of this search. Thanks to Street View Spectator services, you can automate this search very easy and you can reach the entire list with a single click .
+</p>
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-lg-5 text-center text-lg-left">
+        <img class="img-fluid" src="{{ url_for('static', filename='images/h2.jpg') }}"">
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-lg-7">
+
+        <!-- Grid row -->
+        <div class="row mb-3">
+
+          <!-- Grid column -->
+          <div class="col-1">
+            <i class="fas fa-share fa-lg indigo-text"></i>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-xl-10 col-md-11 col-10">
+            <h6 class="font-weight-bold mb-3">Discover The Secrets getting New Leads – Fast.</h6>
+            <p class="grey-text">Generate leads within seconds and get the power of a marketeer, without paying their $100 hourly rate.</p>
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+        <!-- Grid row -->
+        <div class="row mb-3">
+
+          <!-- Grid column -->
+          <div class="col-1">
+            <i class="fas fa-share fa-lg indigo-text"></i>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-xl-10 col-md-11 col-10">
+            <h6 class="font-weight-bold mb-3">Helping our customers grow & succeed</h6>
+            <p class="grey-text">Stop wasting your efforts with outdated databases or email lists and get the benefit and power of an experienced marketeer, without paying for their services Generate quality leads within seconds based on up-to-date company information provided by Google Maps.Spend your time taking photos, leave the lead generation to us.
+</p>
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+        <!--Grid row-->
+        <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-1">
+            <i class="fas fa-share fa-lg indigo-text"></i>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-xl-10 col-md-11 col-10">
+            <h6 class="font-weight-bold mb-3">Reach Millions Through Google Maps</h6>
+            <p class="grey-text mb-0">Millions of businesses have their company listed with Google My Business and therefore able to be found through Google Maps with up-to-date information about their company.Scrape data like marketing pixels (Facebook/Google) and Social Media links (Twitter, Instagram, Facebook and Pinterest) and much more to offer your services. You know what they are missing out on!
+</p>
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!--Grid row-->
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!-- Grid row -->
+
+  </section>
+  <!--Section: Content-->
+
+
+</div>
+
+
+<div class="container my-5 p-5 z-depth-1">
+
+
+  <!--Section: Content-->
+  <section class="text-center dark-grey-text">
+
+    <!-- Section heading -->
+    <h3 class="font-weight-bold mb-4 pb-2">We use our own scripts</h3>
+    <!-- Section description -->
+    <p class="lead grey-text mx-auto mb-5">We don’t build scripts and sell them. We built our script to use ourselves, to make life easier, to help reduce the number of calls or emails we had to send. In short, our script narrows down the huge list of potential clients we would have had to wade through.
+</p>
+
+    <!-- Grid row -->
+
+  </section>
+  <!--Section: Content-->
+
+
+
+  <!--Section: Content-->
+  <section class="text-center dark-grey-text">
+
+    <!-- Section heading -->
+    <h3 class="font-weight-bold mb-4 pb-2">Focused Search</h3>
+    <!-- Section description -->
+    <p class="lead grey-text mx-auto mb-5">Our script focuses your potential client list by only returning those businesses that have zero or one Street View & 360 Photo.</p>
+
+    <!-- Grid row -->
+
+  </section>
+  <!--Section: Content-->
+
+
+</div>
+
+
+
+<!-- How it works block -->
+<div class="container z-depth-1 my-5 pt-5 pb-3 px-5">
+
+  <!-- Section -->
+  <section>
+
+    <style>
+      .fa-play:before {
+        margin-left: .3rem;
+      }
+
+      /* Steps */
+      .step {
+        list-style: none;
+        margin: 0;
+      }
+
+      .step-element {
+        display: flex;
+        padding: 1rem 0;
+      }
+
+      .step-number {
+        position: relative;
+        width: 7rem;
+        flex-shrink: 0;
+        text-align: center;
+      }
+
+      .step-number .number {
+        color: #bfc5ca;
+        background-color: #eaeff4;
+        font-size: 1.5rem;
+      }
+
+      .step-number .number {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+      }
+
+      .number {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 38px;
+        border-radius: 10rem;
+      }
+
+      .step-number::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 48px;
+        bottom: -2rem;
+        margin-left: -1px;
+        border-left: 2px dashed #eaeff4;
+      }
+
+      .step .step-element:last-child .step-number::before {
+        bottom: 1rem;
+      }
+
+      body > div.accordion-container > div.container.z-depth-1.my-.pt-5.pb-3.px-5
+      {
+        margin-top: -25px !important;
+      }
+      body > div.accordion-container > div.container.z-depth-1.my-5.pt-5.pb-3.px-5 > section
+      {
+
+      margin-top: -120px !important;
+}
+}
+    </style>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+            <iframe id="player" class="embed-responsive-item" src="https://www.youtube.com/embed/7MUISDJ5ZZ4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="font-weight-bold text-center dark-grey-text pb-2">How it works</h3>
+    <hr class="w-header my-4">
+    <p class="lead text-center text pt-2 mb-5">Automatically extract data from Google Maps with 1 click</p>
+
+    <div class="row align-items-center">
+
+      <div class="col-lg-6 mb-4">
+        <div>
+          <img class="rounded img-fluid" src="https://cdn.pixabay.com/photo/2018/01/31/05/43/web-3120321_960_720.png">
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-4">
+
+        <ol class="step pl-0">
+          <li class="step-element pb-0">
+            <div class="step-number">
+              <span class="number">1</span>
+            </div>
+            <div class="step-excerpt">
+              <h6 class="font-weight-bold dark-grey-text mb-3">Enter Search Terms</h6>
+            </div>
+          </li>
+          <li class="step-element pb-0">
+            <div class="step-number">
+              <span class="number">2</span>
+            </div>
+            <div class="step-excerpt">
+              <h6 class="font-weight-bold dark-grey-text mb-3">Click Search – Street View Spectator will automatically show those businesses with zero and one Street View and 360 Photos along with website details, phone numbers and email addresses.</h6>
+            </div>
+          </li>
+          <li class="step-element pb-0">
+            <div class="step-number">
+              <span class="number">3</span>
+            </div>
+            <div class="step-excerpt">
+              <h6 class="font-weight-bold dark-grey-text mb-3">Download - You can choose to download your results</h6>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- Section -->
+
+</div>
+
+
+<!-- steps -->
+
+<div class="container z-depth-1 my-5 p-5">
+
+  <!-- Section -->
+  <section>
+
+		<h3 class="font-weight-bold text-center dark-grey-text pb-2">Search Tips
+</h3>
+    <hr class="w-header my-4">
+    <p class="lead text-center text pt-2 pb-3 mb-5">If we were to put on a webinar or course on how to search on Google, most people would say, are you kidding, I know how to search on Google. We believe that most people may not be using Google search to its full potential, so here are some tips that we hope you find useful:</p>
+
+    <div class="row dark-grey-text">
+
+      <div class="col-md-6 col-xl-4 mb-4">
+        <div class="media">
+          <div class="mr-4">
+            <span class="text-primary"><img src="{{ url_for('static', filename='images/steps/1.png') }}" class="rounded-circle img-fluid"></span>
+          </div>
+          <div class="media-body">
+            <h6 class="font-weight-bold">Search for an exact match.<br>For example</h6>
+            <p class="text">"tallest building"</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-xl-4 mb-4">
+        <div class="media">
+          <div class="mr-4">
+            <span class="text-danger"><img src="{{ url_for('static', filename='images/steps/2.png') }}" class="rounded-circle img-fluid"></span>
+          </div>
+          <div class="media-body">
+            <h6 class="font-weight-bold">Exclude words from search.<br>For example:</h6>
+            <p class="text">Mustang -cars</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-xl-4 mb-4">
+        <div class="media">
+          <div class="mr-4">
+            <span class="text-info"></span><img src="{{ url_for('static', filename='images/steps/3.png') }}" class="rounded-circle img-fluid">
+          </div>
+          <div class="media-body">
+            <h6 class="font-weight-bold">Combine searches.<br>For example:</h6>
+            <p class="text">chocolate OR white chocolate</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-xl-4 mb-4">
+        <div class="media">
+          <div class="mr-4">
+            <span class="text-warning"><img src="{{ url_for('static', filename='images/steps/4.png') }}" class="rounded-circle img-fluid"></span>
+          </div>
+          <div class="media-body">
+            <h6 class="font-weight-bold">Keeping it simple and narrow your search.<br>For example</h6>
+            <p class="text">Pizza near me <br>Pizza places nearby
+</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-xl-4 mb-4">
+        <div class="media">
+          <div class="mr-4">
+            <span class="text-muted"><img src="{{ url_for('static', filename='images/steps/5.png') }}" class="rounded-circle img-fluid"></span>
+          </div>
+          <div class="media-body">
+            <h6 class="font-weight-bold">Location based search.<br>For example</h6>
+            <p class="text">pizza location: Calgary<br>loc:"Calgary" pizza</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+  <!-- Section -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- testimonial -->
+
+
+<section class="bg-white testimonials-clean">
+
+  <form action="/" method="POST">
+
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Testimonials </h2>
+            <p class="text-center">Our customers love us! Read what they have to say below. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae.</p>
+        </div>
+
+
+        <div class="row people">
+  {% for row in data %}
+
+            <div class="col-md-6 col-lg-4 item">
+                <div class="bg-light box">
+                    <p class="text-dark description">{{row.description}}</p>
+                </div>
+                <div class="author">
+                    <h5 class="name">{{row.name}}</h5>
+                    <p class="text-dark title">{{row.designation}}</p>
+                </div>
+            </div>
+            <br>
+            <br>
+                      {% endfor %}
+        </div>
+
+
+
+    </div>
+</form>
+</section>
+
+
+
+{% include 'footer.html' %}
+{% endblock %}

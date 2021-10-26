@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+
+<body class="home">
+    {% include 'user_nav.html' %}
+
+<form  action="/user_home" method="POST">
+    <div class="container">
+
+        <div class="row height d-flex justify-content-center align-items-center">
+            <div class="col-md-8">
+                <div class="search"> <i class="fa fa-search"></i> <input type="text" name = "search" class="form-control" placeholder="Looking for data?"> <button class="btn btn-primary" type="submit">Search</button> </div>
+            </div>
+        </div>
+</form>
+        <section>
+    <div class="container py-5">
+        <h1 class="text-center pricing">Account Details</h1> <br>
+        <div class="row text-center align-items-end">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h1 class="h6 text-uppercase font-weight-bold mb-4">User Information</h1>
+                    <div class="custom-separator my-4 mx-auto bg-warning"></div>
+                    <ul class="list-unstyled my-5 text-small text-left">
+                        <li class="mb-3"><b>Name:</b> {{user.Name}}</li>
+                        <li class="mb-3"><b>Email:</b> {{user.email}}</li>
+                        <li class="mb-3"><b>Phone:</b> {{user.phone}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h1 class="h6 text-uppercase font-weight-bold mb-4">Plan Information</h1>
+                    <div class="custom-separator my-4 mx-auto bg-warning"></div>
+                    <ul class="list-unstyled my-5 text-small text-left font-weight-normal">
+                        <li class="mb-3"><b>Name:</b> {{p.name}}</li>
+                        <li class="mb-3"><b>price:</b> {{p.price}}</li>
+                        <li class="mb-3"><b>End Date:</b> {{p.date}}</li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h1 class="h6 text-uppercase font-weight-bold mb-4">Usage</h1>
+                    <div class="custom-separator my-4 mx-auto bg-warning"></div>
+                    <ul class="list-unstyled my-5 text-small text-left font-weight-normal">
+                        <li class="mb-3"> <i class="fa fa-check mr-2 text-primary"></i> 15GB Disk Space </li>
+                        <li class="mb-3"> <i class="fa fa-check mr-2 text-primary"></i> 15 Email Accounts </li>
+                        <li class="mb-3"> <i class="fa fa-check mr-2 text-primary"></i> 15GB Monthly Bandwidth</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </div>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+{% include 'footer.html' %}
+{% endblock %}
