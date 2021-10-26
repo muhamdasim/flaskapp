@@ -21,7 +21,6 @@ from selenium.webdriver.chrome.options import Options
 from waitress import serve
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from script import *
 
 
 stripe_keys = {
