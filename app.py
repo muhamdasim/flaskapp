@@ -13,8 +13,9 @@ import os
 import datetime
 import random
 import string
+import time
 import smtplib
-import stripe
+import pandas as pd
 from selenium import webdriver
 from flask import Flask
 from selenium.webdriver.chrome.options import Options
@@ -23,9 +24,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
+
 stripe_keys = {
-  'secret_key': 'sk_test_51JnTbFCUIpk7YY0L01uzn5KOaoG14oezlRsdEl7s7sXmEuemOVksGL9OM1JmPqLtDzfblmeEvlUXUNbH4RTq9jo900rfWufkHt',
-  'publishable_key':'pk_test_51JnTbFCUIpk7YY0L8R45RnMglBNzNLgVnzQelIXCKDkw0u7wjEeuahProMWadhmjkffEmwkTFdzUCSRrZbMlzIAm00mOZGld3t'
+  'secret_key': 'sk_test_51JpGWQChgKx4d8ZkeQGxPCSyMNlNUZ3P8PTOKNs7ITsNmdEqlJle6uN4okQaWz1LngjYrj8YXh3Qq8GwQ152sFGW00CTA825OA',
+  'publishable_key':'pk_test_51JpGWQChgKx4d8ZkYMn6qdxfVaPZ3WfVHMhjF3QS5zDgZ214XJea9jPDGFukWXPBjLRxlzsklEheH7vCeYimlljF00zvSYeocw'
 }
 
 
@@ -39,10 +41,11 @@ app.secret_key = "Secret Key"
 
 # Mysql db config
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'codeeeml_flask'
-app.config['MYSQL_PASSWORD'] = 'Meseoadmin@21'
-app.config['MYSQL_DB'] = 'codeeeml_flask'
+app.config['MYSQL_HOST'] = 'database-1.cj217kicihvy.us-east-2.rds.amazonaws.com'
+app.config['MYSQL_PORT']=3306
+app.config['MYSQL_USER'] = 'admin'
+app.config['MYSQL_PASSWORD'] = 'Codeaza21'
+app.config['MYSQL_DB'] = 'flaskapp'
 
 # Intialize MySQL
 mysql = MySQL(app)
@@ -65,7 +68,6 @@ app.config.update(mail_settings)
 mail = Mail(app)
 
 
-# Stripe integration
 
 
 #email reset key
@@ -354,28 +356,8 @@ def delete(id):
     return redirect(url_for('plans'))
 
 
-#stripe payment integration HARIS
-
-#ERROR------------------------------------------------------------------------------------>>>>>
-@app.route('/charge', methods=['POST'])
-def charge():
-    amount=5
-    customer = stripe.Customer.create(
-        email='customer@example.com',
-        source=request.form['stripeToken']
-    )
 
 
-    charge = stripe.Charge.create(
-        customer=customer.id,
-        amount=amount,
-        currency='usd',
-        description='Flask Charge'
-    )
-
-    cursor.execute('update invoices set payment_status = 1 where id= 3');
-
-    return render_template('charge.html' , amount=amount )
 
 #Admin reset email
 @app.route('/adminlogin/reset',methods = ['GET', 'POST'])
@@ -454,7 +436,7 @@ def user_login():
         password = request.form['password']
         # Check if account exists using MySQL
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM users WHERE username = %s AND password = %s', (username, password,))
+        cursor.execute('SELECT * FROM users WHERE username = %s AND password = %s', (username, password))
         # Fetch one record and return result
         user = cursor.fetchone()
         # If account exists in accounts table in out database
@@ -536,7 +518,7 @@ def user_register():
         data= cursor.fetchone()
         data['plan_id']=id
 
-    return render_template('user_register.html', data = data , type = type )
+    return render_template('user_register.html', data = data , type = type ,key=stripe_keys['publishable_key'])
 
 
 #- this will be the logout page for admin
@@ -676,71 +658,134 @@ def script ():
     options.add_argument("enable-automation")
     options.add_argument("--disable-infobars")
     options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(options=options)
-    driver.get("https://www.google.com/")
-    element_text = driver.page_source
-    driver.quit()
-    return element_text
+    driver = webdriver.Chrome(options=options, executable_path='/usr/bin/chromedriver')
+    keyword = "restraunts in e11/2 islamabad"
+    url = "https://www.google.com/search?q=" + keyword + "&tbm=lcl&oq=" + keyword
+    driver.get(url)
+    driver.execute_script("window.open('');")
+    driver.switch_to.window(driver.window_handles[0])
+    rows = []
+    while True:
+        nodes = driver.find_elements_by_xpath('//div[@jsaction]/div[contains(@id,"tsuid")]//div[@role="heading"]')
+        for i in range(1, len(nodes)):
+            driver.switch_to.window(driver.window_handles[0])
+            try:
+                driver.find_element_by_xpath(
+                    '//div[@jsaction]/div[contains(@id,"tsuid")][' + str(i) + ']//div[@role="heading"]').click()
+            except:
+                continue
+            time.sleep(random.randint(6, 10))
+            title = "";
+            website = "";
+            phone = "";
+            street = "";
+            city = "";
+            state = "";
+            zip = "";
+            country = "";
+            address = "";
+            noOfPhotos = ""
 
-
-
-# @app.errorhandler(404)
-# def page_not_found(e):
-#     # note that we set the 404 status explicitly
-#     return render_template('404.html'), 404
-#
-#
-# @app.errorhandler(500)
-# def page_not_found(e):
-#     return render_template('404.html'), 404
-
-
-@app.route("/payment")
-def buy_page():
-    return render_template('payment.html')
-
-
-@app.route("/paypal_ipn", methods=['POST', 'GET'])
-def paypal_ipn_listener():
-    print("IPN event received.")
-
-    # Sending message as-is with the notify-validate request
-    params = request.form.to_dict()
-    params['cmd'] = '_notify-validate'
-    headers = {'content-type': 'application/x-www-form-urlencoded',
-               'user-agent': 'Paypal-devdungeon-tester'}
-    response = requests.post(VERIFY_URL, params=params, headers=headers, verify=True)
-    response.raise_for_status()
-
-    # See if PayPal confirms the validity of the IPN received
-    if response.text == 'VERIFIED':
-        print("Verified IPN response received.")
+            title = driver.find_element_by_xpath("//h2/span").text
+            try:
+                phone = driver.find_element_by_xpath(
+                    '//div[@data-attrid="kc:/collection/knowledge_panels/has_phone:phone"]//span[2]').text
+            except:
+                pass
+            try:
+                website = driver.find_element_by_xpath("//div[@lang]//a[@role='button'][@ping]").get_attribute('href')
+            except:
+                pass
+            try:
+                address = driver.find_element_by_xpath(
+                    '//div[@data-attrid="kc:/location/location:address"]//span[2]').text
+            except:
+                pass
+            try:
+                street = address.split(',')[0]
+            except:
+                pass
+            try:
+                city = address.split(',')[1]
+            except:
+                pass
+            try:
+                state = address.split(',')[2].strip().split(' ')[0]
+            except:
+                pass
+            try:
+                zip = address.split(',')[2].strip().split(' ')[1]
+            except:
+                pass
+            try:
+                country = address.split(',')[-1]
+            except:
+                pass
+            photoUrl = ""
+            try:
+                photoUrl = driver.find_element_by_xpath(
+                    '//div[@data-attrid="kc:/location/location:media"]/div/a[1]').get_attribute('href')
+            except:
+                pass
+            if photoUrl != '':
+                driver.switch_to.window(driver.window_handles[1])
+                driver.get(photoUrl)
+                time.sleep(random.randint(3, 10))
+                try:
+                    driver.execute_script("arguments[0].click()",
+                                          driver.find_element_by_xpath("//div[text()='Street View & 360°']"))
+                except:
+                    print(title + ' business has not Street View and 360 images')
+                    noOfPhotos = 0
+                    row = [title, phone, website, address, street, city, state, zip, country, noOfPhotos]
+                    rows.append(row)
+                    continue
+                time.sleep(random.randint(5, 7))
+                try:
+                    imagesCount = driver.find_elements_by_xpath(
+                        '//div[@class="widget-pane widget-pane-visible"]/div/div/div/div[3]/div[@jsan]//a')
+                    print(title + ' business has ' + str(len(imagesCount)) + ' Street View and 360 images')
+                except:
+                    print(title + ' business has ' + str(len(imagesCount)) + ' Street View and 360 images')
+                    noOfPhotos = 0
+                if len(imagesCount) > 1:
+                    print(title + ' business have more than Street View and 360 images')
+                    continue
+                else:
+                    noOfPhotos = len(imagesCount)
+                    row = [title, phone, website, address, street.strip(), city.strip(), state.strip(), zip.strip(),
+                           country.strip(), noOfPhotos]
+                    rows.append(row)
+                    print(row)
+            else:
+                continue
         try:
-            user_id_of_buyer = params['custom'].split(":")[1]
-            print("User who bought item: " + str(user_id_of_buyer))
+            driver.switch_to.window(driver.window_handles[0])
+            driver.find_element_by_id("pnnext").click()
+            time.sleep(random.randint(5, 10))
+        except:
+            break
 
-            # Take action, e.g. update database to give user 1000 tokens
-
-        except Exception as e:
-            print(e)
-
-    elif response.text == 'INVALID':
-        # Don't trust
-        print("Invalid IPN response.")
-    else:
-        print("Some other response.")
-        print(response.text)
-    return ""
-
-
-@app.route("/paypal_cancel")
-def paypal_cancel():
-    return "PayPal cancel"
+    df = pd.DataFrame(rows, columns=['Title', 'Phone', 'Website', 'Address', 'Street', 'City', 'State', 'Zip', 'Country',
+                                  'No_of_Photos'])
+    df.to_csv(keyword.replace("'", "").replace('"', '"').replace("/", "").replace("\\", "") + '.csv', index=False,
+              encoding='utf-8-sig')
+    print('All business has been scraped')
+    driver.quit()
+    return df.to_string()
+    #driver.get("https://www.google.com/")
+    #element_text = driver.page_source
+    #driver.quit()
+    #return element_text
 
 
-@app.route("/paypal_success")
-def paypal_success():
-    return "Paypal success"
+
+
+
+
+
+
+
 
 
 @app.route("/admin/testimonial" , methods = ['POST' , 'GET'])
@@ -807,8 +852,24 @@ def testimonial_edit():
 # search query pass
 
 
+@app.route('/charge', methods=['POST'])
+def charge():
+    # Amount in cents
+    customer = stripe.Customer.create(
+        email='customer@example.com',
+        source=request.form['stripeToken']
+    )
+
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=amount,
+        currency='usd',
+        description='Flask Charge'
+    )
+    return render_template('charge.html')
+
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0',port=8080)
     app.debug = True
