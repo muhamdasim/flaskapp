@@ -41,11 +41,11 @@ app.secret_key = "Secret Key"
 
 # Mysql db config
 
-app.config['MYSQL_HOST'] = 'database-1.cj217kicihvy.us-east-2.rds.amazonaws.com'
+app.config['MYSQL_HOST'] = 'flask.clethmimoygm.us-east-2.rds.amazonaws.com'
 app.config['MYSQL_PORT']=3306
 app.config['MYSQL_USER'] = 'admin'
-app.config['MYSQL_PASSWORD'] = 'Codeaza21'
-app.config['MYSQL_DB'] = 'flaskapp'
+app.config['MYSQL_PASSWORD'] = 'odeaza21'
+app.config['MYSQL_DB'] = 'flask'
 
 # Intialize MySQL
 mysql = MySQL(app)
