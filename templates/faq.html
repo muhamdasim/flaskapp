@@ -3,119 +3,117 @@
 
 
 {% block title %} FAQs {% endblock %}
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 {% block body %}
 
 
+<div class="container">
+  <div class="row">
+                    <!-- ***** FAQ Start ***** -->
+                    <div class="col-md-6 offset-md-3">
 
-<script>
+                        <div class="faq-title text-center pb-3">
+                            <h2>FAQ</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 offset-md-3">
+                        <div class="faq" id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="faqHeading-1">
+                                    <div class="mb-0">
+                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-1" data-aria-expanded="true" data-aria-controls="faqCollapse-1">
+                                            <span class="badge">1</span>Can I start on one plan and upgrade to another?
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div id="faqCollapse-1" class="collapse" aria-labelledby="faqHeading-1" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Yes, of course, just click on the get started button on the new plan and we will take care of the rest.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="faqHeading-2">
+                                    <div class="mb-0">
+                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-2" data-aria-expanded="false" data-aria-controls="faqCollapse-2">
+                                            <span class="badge">2</span>What is the difference between price plans?
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div id="faqCollapse-2" class="collapse" aria-labelledby="faqHeading-2" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                          Each plan offers a different number of features and is based upon your own activity. Light users can start with the Learner Plan, whereas Heavy Users can start on the Pro User Plan
 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="faqHeading-3">
+                                    <div class="mb-0">
+                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-3" data-aria-expanded="false" data-aria-controls="faqCollapse-3">
+                                            <span class="badge">3</span>Will my plan renew automatically?
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div id="faqCollapse-3" class="collapse" aria-labelledby="faqHeading-3" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                          Yes, your plan renews automatically.
+ 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="faqHeading-4">
+                                    <div class="mb-0">
+                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-4" data-aria-expanded="false" data-aria-controls="faqCollapse-4">
+                                            <span class="badge">4</span>Do unused searches etc. roll over to the next month?
 
-  $(".set > a").on("click", function() {
-    if ($(this).hasClass("active")) {
-      $(this).removeClass("active");
-      $(this)
-        .siblings(".set .content")
-        .slideUp(200);
-      $(".set > a i")
-        .removeClass("fa-minus")
-        .addClass("fa-plus");
-    } else {
-      $(".set > a i")
-        .removeClass("fa-minus")
-        .addClass("fa-plus");
-      $(this)
-        .find("i")
-        .removeClass("fa-plus")
-        .addClass("fa-minus");
-      $(".set > a").removeClass("active");
-      $(this).addClass("active");
-      $(".set .content").slideUp(200);
-      $(this)
-        .siblings(".set .content")
-        .slideDown(200);
-    }
-  });
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div id="faqCollapse-4" class="collapse" aria-labelledby="faqHeading-4" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                          No – each month resets for features.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="faqHeading-5">
+                                    <div class="mb-0">
+                                        <h5 class="faq-title" data-toggle="collapse" data-target="#faqCollapse-5" data-aria-expanded="false" data-aria-controls="faqCollapse-5">
+                                            <span class="badge">5</span>Can I cancel my subscription?
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div id="faqCollapse-5" class="collapse" aria-labelledby="faqHeading-5" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>
+                                          You can cancel the renewal of your plan at any time for any reason. Click on my account, go to the account tab, and click ‘cancel’.
+                                        </p>
+                                          
 
-</script>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                </section>
 
-<div class="accordion-container">
-
-                 <div class="set">
-                     <a href="javascript:void(0)" class="active">
-                       Can I start on one plan and upgrade to another?
-       <i class="fa fa-minus"></i>
-     </a>
-                     <div class="content" style="display: block;">
-                         <p>Yes, of course, just click on the get started button on the new plan and we will take care of the rest.</p>
-                     </div>
-                 </div>
-
-                 <div class="set">
-                     <a href="javascript:void(0)">
-                       What is the difference between price plans?
-       <i class="fa fa-plus"></i>
-     </a>
-                     <div class="content" style="display: none;">
-                         <p>Each plan offers a different number of features and is based upon your own activity. Light users can start with the Learner Plan, whereas Heavy Users can start on the Pro User Plan
-</p>
-                     </div>
-                 </div>
-
-                 <div class="set">
-                     <a href="javascript:void(0)">
-                       Will my plan renew automatically?<i class="fa fa-plus"></i>
-                     </a>
-                     <div class="content">
-                         <p>Yes, your plan renews automatically.</p>
-                     </div>
-                 </div>
-
-                 <div class="set">
-                     <a href="javascript:void(0)">
-                       Do unused searches etc. roll over to the next month?<i class="fa fa-plus"></i>
-                     </a>
-                     <div class="content">
-                         <p>No – each month resets for features.</p>
-                     </div>
-                 </div>
-
-                 <div class="set">
-                     <a href="javascript:void(0)">
-                       Can I cancel my subscription?<i class="fa fa-plus"></i>
-                     </a>
-                     <div class="content">
-                         <p>You can cancel the renewal of your plan at any time for any reason. Click on my account, go to the account tab, and click ‘cancel’.</p>
-                     </div>
-                 </div>
-
-                 <div class="set">
-                     <a href="javascript:void(0)">
-                       Can I cancel my subscription?<i class="fa fa-plus"></i>
-                     </a>
-                     <div class="content">
-                         <p>You can cancel the renewal of your plan at any time for any reason. Click on my account, go to the account tab, and click ‘cancel’.</p>
-
-
-
-<br>
-<b><u>Increase conversions</u></b>
-
-<p>Increase your conversion rates by targeting prospective clients with zero or one Street View and 360 Photos</p>
-
-<b><u>Reduce bounce rates</u></b>
-<br>
-<p>Decrease bounce rates by targeting specific prospects with real details directly from the website</p>
-
-<b><u>Build your email list</u></b>
-<br>
-<p>Easily build your email list through downloadable files.</p>
-
-                     </div>
-                 </div>
 <br><br><br><br>
-
 
 <div class="container my-5 py-5 z-depth-1">
 
@@ -136,6 +134,13 @@
 
   </section>
   <!--Section: Content-->
+
+
+<div class="spacingg">
+  <br>
+</div>
+
+
 
 
 </div>

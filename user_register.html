@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-7 col-lg-8">
           <h4 class="mb-3">Register Now</h4>
-          <form class="needs-validation" action="/charge" method="POST">
+          <form class="needs-validation" action="/charge" method="POST" novalidate>
             <div class="row g-3">
               <div class="col-sm-6">
                 <label for="firstname" class="form-label">First name</label>
@@ -79,7 +79,7 @@
               </div>
               <div class="col-12">
                 <label for="password" class="form-label">Password <span class="text-muted"></span></label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="********" required>
+                <input type="password" class="form-control" name="password" id="password" placeholder="********">
                 <div class="invalid-feedback">
                   Please enter a valid password for registeration.
                 </div>
@@ -108,15 +108,15 @@
         data-locale="auto">
     </script>
 	<input type="number" value={{data.price}} name="amount" id="amount" style="display:none">
-	<input type="number" value={{data.plan_id}} name="plan_id" id="plan_id" style="display:none">
-	<input type="number" value={{data.subscription_duration}} name="plan_duration" id="plan_duration" style="display:none">
     <script>
         // Hide default stripe button, be careful there if you
         // have more than 1 button of that class
         document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
     </script>
-	
-    <button style="margin-top:20px" type="submit" class="btn rounded-pill btn-dark py-2 px-4">Sign Up Now</button>
+	<div class="spacingg">
+              <br>
+            </div>
+    <button type="submit" class="btn rounded-pill btn-dark py-2 px-4">Sign Up Now</button>
 	<div class="spacingg">
               <br><br>
             </div>

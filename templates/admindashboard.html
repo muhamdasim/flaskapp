@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block title %} Home {% endblock %}
 
 {% block body %}
@@ -70,22 +69,25 @@
   <!-- </div> -->
 
 
-  <br><br>
-        <div class="qasim h3">Active Plans</div>
-        <div class="container">
-          <div class="row">
-          <div class="col-md-4">
-            <div class="card-counter primary">
-              <i class="fas fa-money-bill-wave"></i>
-              <span class="count-numbers">{{total_active_plans.total_active_plans}}</span>
-              <span class="count-name">Total Plans</span>
+<br><br>
+          <div class="qasim h3">Active Plans</div>
+          <div class="container">
+            <div class="row">
+	 {% for row in plan %}
+            <div class="col-md-3">
+              <div class="card-counter primary">
+                <i class="fas fa-users"></i>
+                <span class="count-numbers">{{row.count}}</span>
+                <span class="count-name">{{row.name}}</span>
+              </div>
+            </div>
+
+           {% endfor %}
             </div>
           </div>
-
-
         </div>
-
-      </div>
+      <!-- </div> -->
+  <!-- </div> -->
 
 
 
@@ -99,5 +101,5 @@
 
 
 
-{% include 'footer.html' %}
+
 {% endblock %}

@@ -20,7 +20,8 @@
 
                                 <tr>
 
-
+                                    
+                                    <th>#</th>
                                     <th>Username</th>
                                     <th>Plan</th>
                                     <th>Date</th>
@@ -32,6 +33,7 @@
                                 {% for row in plans %}
 
                                 <tr>
+                                    <td>{{plans.index(row)+1}}</td>
                                     <td>{{row.un}}</td>
                                     <td>{{row.n}}</td>
                                     <td>{{row.d}}</td>
@@ -43,13 +45,20 @@
 
                             </table>
 
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                   {% for row in total[0:] %} 
+                                  <li class="page-item"><a class="page-link" href="{{domain_url}}admin/view/invoices/page/{{total.index(row)+1}}">{{total.index(row)+1}}</a></li>
+                                  {% endfor %}
+
+                                </ul>
+                              </nav>
+
 
                         </div>
 
 
-
-
-
+                   
 
 
 
@@ -69,5 +78,5 @@
 
 </body>
 
-{% include 'footer.html' %}
+
 {% endblock %}

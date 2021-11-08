@@ -8,12 +8,25 @@
     {% include 'admin_nav.html' %}
 
             <div class="container">
+
+               <form  action="/admin/view/user" method="POST">
+                  <div class="row height d-flex justify-content-center align-items-center">
+                      <div class="col-md-8">
+                          <div class="search"> <i class="fa fa-search"></i> <input type="text" name = "search" class="form-control" placeholder="Looking for User?"> <button class="btn btn-primary" type="submit">Search</button> </div>
+                      </div>
+                  </div>
+              </form>
+              <br><br><br>
                 <div class="row">
+
+
                     <div class="col md-12">
+                       
 
                         <div class="jumbotron p-3">
 
                             <h2>Manage <b>Users </b> </h2>
+
 
 
                             {% with messages = get_flashed_messages() %}
@@ -36,11 +49,13 @@
 
                             </div>
 
-
                             {% endfor %}
 
                             {% endif %}
                             {% endwith %}
+
+
+                            
 
                             <table class="table table-hover table-dark">
 
@@ -61,11 +76,12 @@
                                 </tr>
 
 
-                                {% for row in users %}
+                                {% for row in user %}
 
                                 <tr>
-                                    <td>{{users.index(row)+1}}</td>
-                                    <td>{{row.username}}</td>
+
+                                 <td>{{user.index(row)+1}}</td>
+                                 <td>{{row.username}}</td>
                                     <td>{{row.email}}</td>
                                     <td>{{row.plan_name}}</td>
                                     <td>{{row.start_date}}</td>
@@ -160,9 +176,25 @@
 
                             </table>
 
+                           
+                              
+                              <nav aria-label="Page navigation example">
+                                 <ul class="pagination">
+                                    {% for row in total[0:] %} 
+                                   <li class="page-item"><a class="page-link" href="{{domain_url}}admin/view/user/page/{{total.index(row)+1}}">{{total.index(row)+1}}</a></li>
+                                   {% endfor %}
 
+                                 </ul>
+                               </nav>
+                          </div>
+
+                        
                         </div>
 
+                  
+
+                       
+                       
         <!-- Modal Add Plan-->
 
 
@@ -272,5 +304,5 @@
 
 </body>
 
-{% include 'footer.html' %}
+
 {% endblock %}

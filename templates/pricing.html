@@ -8,8 +8,8 @@
 {% block body %}
 
 <form action="/price" method="POST">
-
 <section class="pricing-tables text-center">
+  <div class="row white">
     <div class="container">
         <h2 class="section__title">Pricing</h2>
         <div class="switch">
@@ -18,7 +18,18 @@
             <span class="annually">Annually
             </span>
         </div>
+		{% with messages = get_flashed_messages() %}
 
+                            {% if messages %}
+                            {% for msg in messages%}
+
+                            <p class="admin_flash">{{msg}}</p>
+
+                            {% endfor %}
+
+                            {% endif %}
+
+                            {% endwith %}
         <div class="plans grid-wrapper text-center">
                 {% for row in plans %}
             <div class="plan plan--starter flex-wrapper">
@@ -47,7 +58,7 @@
         </div>
 
     </div>
-
+  </div>
 
     <!-- testimonial -->
 

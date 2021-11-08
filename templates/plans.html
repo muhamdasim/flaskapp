@@ -2,7 +2,21 @@
 
 {% block title %} Add Plans {% endblock %}
 
+
 {% block body %}
+
+
+<style>
+
+body > div.container-fluid.display-table > div > div.container > div > div > div.jumbotron.p-3 
+{
+
+    margin-top : -150px !important;
+
+
+</style>
+
+
 
 <body class="home">
     {% include 'admin_nav.html' %}
@@ -55,6 +69,7 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Searches</th>
+                                    <th>Limits</th>
                                     <th>Price</th>
                                     <th>Yearly</th>
                                     <th>Discount</th>
@@ -71,6 +86,7 @@
                                     <td>{{row.name}}</td>
                                     <td>{{row.description}}</td>
                                     <td>{{row.num_searches}}</td>
+                                    <td>{{row.limits}}</td>
                                     <td>{{row.price}}</td>
                                     <td>{{row.yearly}}</td>
                                     <td>{{row.discount}}</td>
@@ -130,6 +146,18 @@
 
 
                            </div>
+
+                           
+                           <div class="form-group">
+
+
+                              <label>Results:</label>
+                              <input type="text" class="form-control" name="limits" value="{{row.limits}}" required="1">
+
+
+                           </div>
+
+                           
 
                            <div class="form-group">
 
@@ -242,6 +270,16 @@
                            </div>
 
 
+                           <div class="form-group">
+
+
+                              <label>Reseults:</label>
+                              <input type="text" class="form-control" name="limits" required="1">
+
+
+                           </div>
+
+
                              <div class="form-group">
 
 
@@ -319,5 +357,5 @@
 
 </body>
 
-{% include 'footer.html' %}
+
 {% endblock %}
